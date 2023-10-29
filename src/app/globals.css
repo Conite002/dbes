@@ -25,3 +25,42 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+label {
+  color: rgb(105, 105, 122);
+}
+
+input[type="text"],
+select {
+  border: 1px solid rgb(179, 219, 239);
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+.error {
+  color: red;
+}
+
+
+button[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.form-title {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; 
+  text-transform: uppercase;
+  text-align: center;
+}
