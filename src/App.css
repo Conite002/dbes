@@ -1,0 +1,156 @@
+
+:root{
+	--palette-background-disabled: #f0f0f0;
+	--palette-background-primary: #fff;
+	--palette-background-primary-hover: #f5f5f5;
+	--palette-background-primary-selected: #ebebeb;
+	--palette-background-secondary: #fafafa;
+	--palette-background-secondary-selected: #e0e0e0;
+	--palette-background-tertiary-hover: #fafafa;
+	--palette-brand-primary: #03787c;
+	--palette-brand-primary-hover: #026d70;
+	--palette-brand-primary-selected: #025c5f;
+	--palette-error-message-background: #fde7e9;
+	--palette-info-message-background: #f1f1f1;
+	--palette-link-color: #115ea3;
+	--palette-link-hover: #0f548c;
+	--palette-link-pressed: #0e4775;
+	--palette-link-selected: #106ebe;
+	--palette-required-red: #bc2f32;
+	--palette-stroke-accessible: #616161;
+	--palette-stroke-secondary: #d1d1d1;
+	--palette-success-message-background: #dff6dd;
+	--palette-text-color-brand-background: #fff;
+	--palette-text-correct: #13a10e;
+	--palette-text-disabled: #bdbdbd;
+	--palette-text-primary: #242424;
+	--palette-text-secondary: #424242;
+	--palette-text-tertiary: #616161;
+	--palette-text-lightest: #757575;
+	--palette-warning-message-background: #fff4ce;
+	--palette-form-primary: #03787c;
+	--palette-form-primary-rgb: 3, 120, 124;
+	--palette-form-secondary: #014446;
+	--palette-form-tertiary: #e8f2f4;
+	--office-form-theme-primary-color: #03787c;
+	--office-form-theme-secondary-color: #014446;
+	--office-form-theme-primary-color-split: 3, 120, 124;
+	--office-form-aio-renderer-background: linear-gradient(0deg, rgba(var(--office-form-theme-primary-color-split), 0.06), rgba(var(--office-form-theme-primary-color-split), 0.06)),rgba(255, 255, 255, 0.9);
+	--solid-background: linear-gradient(180deg, rgba(3, 120, 124, 0.1) 0%, rgba(3, 120, 124, 0.3) 100%);
+	--waves-background: url(https://cdn.forms.office.net/forms/images/aio/wave-pattern-v1.svg) center top / cover no-repeat, linear-gradient(180deg, rgba(3, 120, 124, 0.2) 0%, rgba(3, 120, 124, 0.8) 100%);
+	--waves-background-for-small-card: url(https://cdn.forms.office.net/forms/images/aio/wave-pattern-v1.svg) center top / cover no-repeat, linear-gradient(180deg, rgba(3, 120, 124, 0.2) 0%, rgba(3, 120, 124, 0.8) 100%);
+	--pure-image-background: url(https://cdn.forms.office.net/forms/images/aio/wave-pattern-v1.svg) center top / cover no-repeat;
+	--current-picked-theme-background: var(--waves-background);
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300&display=swap');
+
+.App {
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App {
+  background-color: #A8D1D2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 4rem;
+}
+
+.form{
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.form-title{
+  background: var(--palette-form-primary);
+  color: var(--palette-text-color-brand-background);
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-weight: 700;
+  height: fit-content;
+}
+
+.form-section{
+    background: var(--office-form-aio-renderer-background);
+    color: var(--palette-text-primary);
+    position: relative;
+    height: max-content;
+    text-align: left;
+    outline: transparent solid 0.0625rem;
+  padding: 2rem;
+
+}
+
+.section-title{
+  font-size: 1.5rem;
+}
+
+.question{
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
+.proposition{
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+.textarea-choice{
+}
+.textarea{
+  border: 0;
+  width: 100%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: .5rem;
+}
+
+
+
+textarea:focus, input:focus{
+  outline: 0;
+  box-shadow: rgba(141, 206, 200, 0.678) 0px 8px 24px;
+
+}
+
+#submit{
+  padding: 1rem;
+  background-color: rgb(180, 210, 210);
+  border-radius: .5rem;
+  font-size: 1rem;
+  margin: 0.3rem;
+  font-weight: 500;
+  color: white;
+}
+
+*:focus {
+  outline: 0;
+}
+
+@media only screen and (max-width: 400px) {
+  .form-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .5rem;
+  }
+}
+
