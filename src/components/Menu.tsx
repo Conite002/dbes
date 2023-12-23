@@ -23,7 +23,7 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Inbox',
+    title: 'Formulaire',
     url: '/page/Inbox',
     iosIcon: mailOutline,
     mdIcon: mailSharp
@@ -69,7 +69,7 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
+          <IonListHeader>Formulaire</IonListHeader>
           <IonNote>hi@ionicframework.com</IonNote>
           {appPages.map((appPage, index) => {
             return (
