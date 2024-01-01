@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { IonCheckbox, IonInput, IonItem, IonLabel, generateId } from "@ionic/react";
-import { CheckboxChangeEventDetail, IonCheckboxCustomEvent } from "@ionic/core";
-import { generateUniqueId } from "../../../utils/getID";
+import { IonCheckbox, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonRow, generateId } from "@ionic/react";
+import { trashSharp } from "ionicons/icons";
+
 
 interface Item {
   name: string;
@@ -12,46 +12,58 @@ interface Item {
 }
 
 interface CheckboxItemProps {
-  getdata: (item: Item) => void;
+  addOption: (item: Item) => void;
+  option:Item,
+  handleDeleteCheckbox: (id: string) => void
 }
 
-const CheckboxItem: React.FC<CheckboxItemProps> = ({ getdata }) => {
-  const [item, setItem] = useState<Item>({
-    name: "",
-    error: "",
-    type: "checkbox",
-    value: false,
-    id: generateUniqueId()
-  });
-
+const CheckboxItem: React.FC<CheckboxItemProps> = ({ option,addOption,handleDeleteCheckbox }) => {
+  const [item, setItem] = useState<Item>(option);
 
   const handleCheckboxChange = (e:any) => {
     const { name, checked } = e.target as HTMLIonCheckboxElement;
     setItem((prevItem) => ({ 
         ...prevItem,
-        ['value']: checked }));
-};
+        ['value']: checked }
+    ));
+  };
+
+
+
 
   useEffect(() => {
-    getdata(item);
+    addOption(item);
   }, [item]);
 
-  console.log(item)
   return (
-    <IonItem>
-      <IonInput
-          placeholder="Nom du champs"
-          type="text"
-          name="checkboxName"
-          value={item.name}
-          onIonChange={(e) => setItem((prevItem) => ({ ...prevItem, name: e.detail.value! }))}
-      />
-      <IonCheckbox
-        name="ischecked"
-        checked={item.value}
-        onIonChange={handleCheckboxChange}
-      />
-    </IonItem>
+    <>
+      <IonRow>
+        <IonCol>
+          <IonInput
+              className="input-title"
+              placeholder="option"
+              type="text"
+              name="checkboxName"
+              value={item.name}
+              onIonChange={(e) => setItem((prevItem) => ({ ...prevItem, name: e.detail.value! }))}
+          />
+        </IonCol>
+        <IonCol size="auto" className="ion-justify-content-center ion-align-items-center">
+          <IonCheckbox
+            name="ischecked"
+            checked={item.value}
+            onIonChange={handleCheckboxChange}
+          />
+        </IonCol>
+        <IonCol size="auto" className="ion-text-center center-ion">
+          <IonIcon
+            icon={trashSharp}
+            onClick={() => handleDeleteCheckbox(item.id)}
+          />
+
+        </IonCol>
+      </IonRow>
+    </>
   );
 };
 

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { IonRadio, IonItem, IonLabel, IonRadioGroup, generateId, IonInput, IonCol, IonRow, IonText } from "@ionic/react";
 import { generateUniqueId } from "../../../utils/getID";
-
+import RadioItem from "./RadioItem";
+import './checkbox.css'
 interface Item {
   name: string;
-  value: string;
+  value: any;
   error: string;
   type: string;
   id: string
@@ -14,7 +15,7 @@ interface RadioItemProps {
   getdata: (item: Item) => void;
 }
 
-const RadioItem: React.FC<RadioItemProps> = ({ getdata }: RadioItemProps) => {
+const RadioItems: React.FC<RadioItemProps> = ({ getdata }: RadioItemProps) => {
   const [item, setItem] = useState<Item>({
     name: "",
     value: "",
@@ -23,10 +24,7 @@ const RadioItem: React.FC<RadioItemProps> = ({ getdata }: RadioItemProps) => {
     id: generateUniqueId()
   });
 
-  const handleRadioChange = (e: any) => {
-    const { value } = e.detail;
-    setItem((prevItem) => ({ ...prevItem, value }));
-  };
+
 
   useEffect(() => {
     getdata(item);
@@ -40,7 +38,7 @@ const RadioItem: React.FC<RadioItemProps> = ({ getdata }: RadioItemProps) => {
     ));
     return radioOptions;
   };
-
+ 
   return (
     <>
       <IonRow>
@@ -48,22 +46,17 @@ const RadioItem: React.FC<RadioItemProps> = ({ getdata }: RadioItemProps) => {
           className="input-radio-text"
             type="text"
             name="radioName"
-            placeholder="Les options"
+            placeholder="Pausez votre question"
             value={item.name}
             onIonChange={e=> (
               setItem((prevItem) => ({ ...prevItem, 'name': e.detail.value! }))
             )}
         />
       </IonRow>
-      <IonRow>
-        <IonRadioGroup value={item.value} onIonChange={handleRadioChange}>
-          <IonRow color="secondary">
-            {createRadios()}    
-          </IonRow>  
-        </IonRadioGroup>
-      </IonRow>
+      <hr style={{backgroundColor:'white', height:'1rem'}}/>
+      <RadioItem  getdata={getdata}/>
     </>
   );
 };
 
-export default RadioItem;
+export default RadioItems;

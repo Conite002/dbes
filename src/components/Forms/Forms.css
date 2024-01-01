@@ -1,0 +1,135 @@
+
+
+.form-container{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+}
+
+.bg-form{}
+/* 
+@media (min-width: 768px) {
+  .form-container{
+    margin: auto;
+  }
+} */
+.custom-bg {
+  background-color: var(--ion-color-primary-light);
+  padding: .2rem;
+  border-radius: .2rem;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Items */
+.item{
+  background-color: var(--ion-color-primary-contrast);
+  margin: .2rem;
+  font-weight: 300;
+  /* color: white; */
+
+}
+
+/* iconItem */
+.iconItem{
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+/* display-item */
+.edition-mode:hover{
+  background-color: var(--ion-color-light-tint);
+  border-top: 5px solid var(--ion-color-primary);
+  border-radius: 5px;
+  /* margin: .2rem; */
+  animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.edition-mode{
+  border-top: 5px solid var(--ion-color-light-tint);
+  border-radius: 5px;
+}
+
+.container-edition-mode{
+  margin-bottom: 2rem;
+  
+}
+
+/* top-menu */
+.active{
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+.top-menu{
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+
+ /* ***
+ 
+ inputTextItem
+ 
+ *** */
+ .input-title{
+  background-color: var(--ion-color-primary-contrast);
+  padding-left: 1rem !important;
+  font-size: 14px;
+
+ }
+
+ .input-content{
+  border: 1px solid var(--ion-color-medium);
+  border-radius: .3rem;
+  padding-left: 1rem !important;
+
+  font-size: 14px;
+ }
+
+ /* *******
+ Textarea
+ ******** */
+
+ .input-content-textarea{
+  border: 1px solid var(--ion-color-light-tint);
+  box-shadow: -15px -15px 15px rgba(255,255,255,0.2), 15px 15px 15px rgba(0,0,0,0.1), inset -5px -5px 5px rgba(255,255,255,0.2), inset 5px 5px 5px rgba(0,0,0,0.1);
+ }
+
+
+ /* *************
+ Radio button
+ *********** */
+.input-radio-text{
+  background-color: var(--ion-color-light-tint);
+  padding: 0rem 1rem !important;
+  color: rgb(142, 149, 147);
+}
+ .center-radio-item{
+    background-color: var(--ion-color-primary-light);
+    margin: 1rem;
+    border-radius: .4rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .radio-item{
+  margin-right: 1rem;
+ }
+

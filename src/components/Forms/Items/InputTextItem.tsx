@@ -19,7 +19,7 @@ const InputTextItem: React.FC<InputTextItemProps> = ({ getdata }) => {
         name: "",
         value: "",
         error: "",
-        type: "",
+        type: "inputtextitem",
         id: generateUniqueId()
     });
 
@@ -41,7 +41,8 @@ const InputTextItem: React.FC<InputTextItemProps> = ({ getdata }) => {
             <IonRow>
                 <IonCol>
                 <IonInput
-                    placeholder="Nom du champs"
+                    className="input-title"
+                    placeholder="Question"
                     type="text"
                     name="name"
                     value={item.name}
@@ -53,7 +54,8 @@ const InputTextItem: React.FC<InputTextItemProps> = ({ getdata }) => {
             <IonRow>
                 <IonCol>
                 <IonInput
-                   placeholder="Valeur du champs"
+                    className="input-content"
+                    placeholder="Entrer votre réponse"
                     type="text"
                     name="value"
                     value={item.value}

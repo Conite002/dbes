@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IonTextarea, IonItem, IonLabel, generateId, IonInput } from "@ionic/react";
+import { IonTextarea, IonItem, IonLabel, generateId, IonInput, IonRow } from "@ionic/react";
 import { generateUniqueId } from "../../../utils/getID";
 
 interface Item {
@@ -19,7 +19,7 @@ const TextareaItem: React.FC<TextareaItemProps> = ({ getdata }: TextareaItemProp
     name: "",
     value: "",
     error: "",
-    type: "textarea",
+    type: "",
     id: generateUniqueId()
   });
 
@@ -33,25 +33,32 @@ const TextareaItem: React.FC<TextareaItemProps> = ({ getdata }: TextareaItemProp
   }, [item]);
 
   return (
-    <IonItem>
-      <IonInput
-          type="text"
-          placeholder="Textarea name"
-          value={item.name}
-          onIonChange={e => setItem(prev => (
-            {
-              ...prev,
-              ['name']: e.detail.value!
-            }
-          ))}
-      />
-      &
-      <IonTextarea
-        placeholder="Valeur"
-        value={item.value}
-        onIonChange={handleTextareaChange}
-      />
-    </IonItem>
+    <>
+      <IonRow>
+        <IonInput
+            type="text"
+            className="input-title"
+
+            placeholder="Question"
+            value={item.name}
+            onIonChange={e => setItem(prev => (
+              {
+                ...prev,
+                ['name']: e.detail.value!
+              }
+            ))}
+        />
+      </IonRow>
+      <IonRow>
+        <IonTextarea
+          className="input-content input-content-textarea"
+          rows={4}
+          placeholder="Votre réponse"
+          value={item.value}
+          onIonChange={handleTextareaChange}
+        />
+      </IonRow>
+    </>
   );
 };
 

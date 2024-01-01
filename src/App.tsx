@@ -33,7 +33,7 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              <Redirect to="/folder/Inbox" />
+              <Redirect to="/folder/Forms" />
             </Route>
             <Route path="/folder/:name" exact={true}>
               <Page />

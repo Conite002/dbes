@@ -8,7 +8,7 @@ interface ContainerProps {
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   return (
-    <div id="container">
+    <div>
       <Forms />
     </div>
   );

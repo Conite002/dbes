@@ -1,0 +1,14 @@
+.center-icon {
+    color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%; 
+  }
+  
+  
+  .custom-button{
+    padding: auto;
+    font-size: .8rem;
+    border-radius: .2rem;
+  }
