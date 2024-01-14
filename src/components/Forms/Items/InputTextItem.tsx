@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IonCol, IonRow, IonInput, IonLabel, IonSelect, IonSelectOption, InputChangeEventDetail, generateId } from "@ionic/react";
 import { generateUniqueId } from "../../../utils/getID";
+import { Item } from "../../../utils/interface";
 
-interface Item {
-  name: string;
-  value: string;
-  error: string;
-  type: string;
-  id: string;
-}
 
 interface InputTextItemProps {
   getdata: (item: Item) => void;
@@ -18,7 +12,6 @@ const InputTextItem: React.FC<InputTextItemProps> = ({ getdata }) => {
     const [item, setItem] = useState<Item>({
         name: "",
         value: "",
-        error: "",
         type: "inputtextitem",
         id: generateUniqueId()
     });

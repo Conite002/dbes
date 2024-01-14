@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { IonGrid, IonRow, IonCol, IonIcon, generateId, IonText, IonButton, IonTextarea, IonContent } from "@ionic/react";
-import { add, airplane, bagOutline, checkbox, checkmarkCircle, checkmarkCircleOutline, eyeOutline, information, informationCircleOutline, radioButtonOff, radioButtonOffOutline, radioButtonOn, text, textOutline, textSharp, trashBin } from "ionicons/icons";
+import { add, airplane, bagOutline, checkbox, checkmarkCircle, checkmarkCircleOutline, eyeOutline, information, informationCircleOutline, radioButtonOff, radioButtonOffOutline, radioButtonOn, text, textOutline, textSharp, trashBin, watchOutline } from "ionicons/icons";
 import InputTextItem from "./Items/InputTextItem";
 import TextareaItem from "./Items/TextareaItem";
 import './Forms.css'
 import Apercu from "../Apercu/Apercu";
 import CheckboxItems from "./Items/CheckboxItems";
 import RadioItems from "./Items/RadioItems";
+import Evaluation from "../Evaluation/Evaluation";
 
 interface FormData {
   type: string;
@@ -23,12 +24,14 @@ const Forms: React.FC = () => {
   const [showQRA, setShowQRA] = useState({
     questions:1,
     reponses:0,
-    apercu:0
+    apercu:0,
+    evaluation:0,
   });
 
 
   const getData = (item: any) => {
-    if(item.name !==''){
+    console.log(item)
+    if(item && item.name !==''){
       setData((prev) => {
         const existingItemIndex = prev.findIndex((prevItem) => prevItem.id === item.id);
     
@@ -69,29 +72,45 @@ const Forms: React.FC = () => {
         questions:values[0],
         reponses:values[1],
         apercu:values[2],
+        evaluation:values[3],
       }
     ))
   }
-  console.log(previewsForm)
+
+  const saveToDB = () =>{
+    if(data.length !== 0){
+      //firebase
+    }
+  }
+  
   return (
     <IonGrid>
       <IonRow className="top-menu">
         <IonCol size="auto">
           <IonText 
             className={showQRA.questions ? "active" : ""}
-           onClick={e => handleDisplayQRA([true,false,false])}>Questions</IonText>
+           onClick={e => handleDisplayQRA([true,false,false, false])}>Questions</IonText>
         </IonCol>
         <IonCol size="auto">
           <IonText 
           className={showQRA.reponses ? "active" : ""}
-          onClick={e => handleDisplayQRA([false,true,false])}>Réponses</IonText>
+          onClick={e => handleDisplayQRA([false,true,false, false])}>Réponses</IonText>
         </IonCol>
         <IonCol size="auto">
           <IonText 
             className={showQRA.apercu ? "active" : ""} 
-            onClick={e => handleDisplayQRA([false,false,true])}>
+            onClick={e => handleDisplayQRA([false,false,true, false])}>
             <IonIcon color="primary" icon={eyeOutline}></IonIcon>
             Apercu
+          </IonText>
+
+        </IonCol>
+        <IonCol size="auto">
+          <IonText 
+            className={showQRA.evaluation ? "active" : ""} 
+            onClick={e => handleDisplayQRA([false,false,false,true])}>
+            <IonIcon color="primary" icon={watchOutline}></IonIcon>
+            Evaluation
           </IonText>
 
         </IonCol>
@@ -101,6 +120,7 @@ const Forms: React.FC = () => {
 
         {
           showQRA.questions&& 
+          <>
             <IonRow color="primary" className="form-container">
               <IonCol>
 
@@ -163,8 +183,11 @@ const Forms: React.FC = () => {
                   
                 </IonRow>
               </IonCol>
-
             </IonRow>
+            <IonRow>
+              <IonCol><IonButton onClick={saveToDB}>Sauvegarder</IonButton> </IonCol>
+            </IonRow>
+          </>
         }
       </IonRow>
 
@@ -174,11 +197,22 @@ const Forms: React.FC = () => {
         }
         {
           showQRA.apercu ?
-          <IonRow>
-            <Apercu formData={data}  getdata={getData}/>
+          <IonRow className="container-edition-mode">
+              <IonCol className="edition-mode">
+               <Apercu formData={data}  getdata={getData}/>
+            </IonCol>
+
           </IonRow> : ''
         }
-        
+
+        {
+          showQRA.evaluation ?
+          <IonRow className="container-edition-mode">
+              <IonCol className="edition-mode">
+               <Evaluation formData={data}  getdata={getData}/>
+            </IonCol>
+          </IonRow> : ''
+        }
     </IonGrid>
   );
 };

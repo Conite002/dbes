@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IonCheckbox, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonRow, generateId } from "@ionic/react";
 import { trashSharp } from "ionicons/icons";
+import { Item } from "../../../utils/interface";
 
-
-interface Item {
-  name: string;
-  error: string;
-  type: string;
-  id: string;
-  value:boolean
-}
 
 interface CheckboxItemProps {
   addOption: (item: Item) => void;

@@ -3,6 +3,8 @@ import InputTextItemForView from "./InputTextItemForView";
 import CheckboxItemForView from "./CheckboxItemForView";
 import RadioItemForView from "./RadioItemForView";
 import TextareaItemForView from "./TextareaItemForView";
+import './apercu.css'
+
 
 interface ApercuProps {
     formData: Array<{

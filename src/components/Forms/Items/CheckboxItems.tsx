@@ -5,14 +5,9 @@ import { generateUniqueId } from "../../../utils/getID";
 import { addCircle } from "ionicons/icons";
 import CheckboxItem from "./CheckboxItem";
 import './checkbox.css'
+import { Item } from "../../../utils/interface";
 
-interface Item {
-  name: string;
-  error: string;
-  type: string;
-  id: string;
-  value:any
-}
+
 
 interface CheckboxItemProps {
   getdata: (item: Item) => void;
@@ -21,7 +16,6 @@ interface CheckboxItemProps {
 const CheckboxItems: React.FC<CheckboxItemProps> = ({ getdata }) => {
   const [checkBoxParent, setCheckBoxParent] = useState<Item>({
     name: "",
-    error: "",
     type: "checkbox",
     value: [{}],
     id: generateUniqueId()
@@ -35,6 +29,8 @@ const CheckboxItems: React.FC<CheckboxItemProps> = ({ getdata }) => {
         if(existingOptIndex !== -1){
           const updatedOpts = [...prev.value];
           updatedOpts[existingOptIndex] = item;
+        
+          return {...prev, value:updatedOpts}
         }
         return {...prev, value:[...prev.value, item]}
       });
@@ -43,7 +39,6 @@ const CheckboxItems: React.FC<CheckboxItemProps> = ({ getdata }) => {
   const handleAddCheckItem = (e:any) => {
     const newCheckItem:Item = {
       name: '',
-      error: "", 
       type: "checkbox", 
       value: false, 
       id: generateUniqueId()
