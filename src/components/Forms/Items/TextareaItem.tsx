@@ -12,12 +12,13 @@ interface Item {
 
 interface TextareaItemProps {
   getdata: (item: Item) => void;
+  value: string;
 }
 
-const TextareaItem: React.FC<TextareaItemProps> = ({ getdata }: TextareaItemProps) => {
+const TextareaItem: React.FC<TextareaItemProps> = ({ getdata, value }: TextareaItemProps) => {
   const [item, setItem] = useState<Item>({
     name: "",
-    value: "",
+    value: value,
     error: "",
     type: "",
     id: generateUniqueId()

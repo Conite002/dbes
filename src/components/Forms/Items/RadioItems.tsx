@@ -13,12 +13,13 @@ interface Item {
 
 interface RadioItemProps {
   getdata: (item: Item) => void;
+  value?: [{}];
 }
 
-const RadioItems: React.FC<RadioItemProps> = ({ getdata }: RadioItemProps) => {
+const RadioItems: React.FC<RadioItemProps> = ({ getdata, value }: RadioItemProps) => {
   const [item, setItem] = useState<Item>({
     name: "",
-    value: "",
+    value: value,
     error: "",
     type: "",
     id: generateUniqueId()
@@ -54,7 +55,7 @@ const RadioItems: React.FC<RadioItemProps> = ({ getdata }: RadioItemProps) => {
         />
       </IonRow>
       <hr style={{backgroundColor:'white', height:'1rem'}}/>
-      <RadioItem  getdata={getdata}/>
+      <RadioItem  getdata={getdata} value={item.value} />
     </>
   );
 };

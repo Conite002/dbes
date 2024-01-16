@@ -15,7 +15,6 @@ interface ApercuProps {
       id: string;
     }>,
     getdata: (item: any) => void;
-    
   }
 const Apercu :React.FC<ApercuProps> = ({ formData, getdata }) => {
 

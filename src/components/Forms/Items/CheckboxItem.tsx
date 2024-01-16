@@ -7,10 +7,12 @@ import { Item } from "../../../utils/interface";
 interface CheckboxItemProps {
   addOption: (item: Item) => void;
   option:Item,
-  handleDeleteCheckbox: (id: string) => void
+  handleDeleteCheckbox: (id: string) => void;
+  value: string;
+
 }
 
-const CheckboxItem: React.FC<CheckboxItemProps> = ({ option,addOption,handleDeleteCheckbox }) => {
+const CheckboxItem: React.FC<CheckboxItemProps> = ({value, option,addOption,handleDeleteCheckbox }) => {
   const [item, setItem] = useState<Item>(option);
 
   const handleCheckboxChange = (e:any) => {

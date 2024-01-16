@@ -11,28 +11,31 @@ import { Item } from "../../../utils/interface";
 
 interface CheckboxItemProps {
   getdata: (item: Item) => void;
+  value?: [{}];
 }
 
-const CheckboxItems: React.FC<CheckboxItemProps> = ({ getdata }) => {
+const CheckboxItems: React.FC<CheckboxItemProps> = ({ getdata, value }) => {
   const [checkBoxParent, setCheckBoxParent] = useState<Item>({
     name: "",
     type: "checkbox",
-    value: [{}],
+    value: value,
     id: generateUniqueId()
   });
   const [checkitems, setCheckItems] = useState<Item[]>([]);
 
   const handleAddOption = (item:Item) =>{
-
       setCheckBoxParent(prev => {
-        const existingOptIndex = prev.value.findIndex((prevItem:Item) => prevItem.id === item.id);
-        if(existingOptIndex !== -1){
-          const updatedOpts = [...prev.value];
-          updatedOpts[existingOptIndex] = item;
-        
-          return {...prev, value:updatedOpts}
-        }
-        return {...prev, value:[...prev.value, item]}
+        console.log("value ",prev.value)
+
+          const existingOptIndex = prev.value && prev.value.findIndex((prevItem:Item) => prevItem.id === item.id);
+          if(existingOptIndex !== -1){
+            const updatedOpts = [...prev.value];
+            updatedOpts[existingOptIndex] = item;
+          
+            return {...prev, value:updatedOpts}
+          }
+          return {...prev, value:[...prev.value, item]}
+          
       });
   }
 
@@ -84,7 +87,7 @@ const handleDeleteCheckbox = (id:string) =>{
         <IonRow>
           {
             checkitems.map( (checkitem, index) => <IonRow key={index}>
-              <CheckboxItem option={checkitem} addOption={handleAddOption} handleDeleteCheckbox={handleDeleteCheckbox} />
+              <CheckboxItem value={checkitem.value} option={checkitem} addOption={handleAddOption} handleDeleteCheckbox={handleDeleteCheckbox} />
             </IonRow> )
           }
         </IonRow>

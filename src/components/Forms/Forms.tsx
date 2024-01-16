@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IonGrid, IonRow, IonCol, IonIcon, generateId, IonText, IonButton, IonTextarea, IonContent } from "@ionic/react";
 import { add, airplane, bagOutline, checkbox, checkmarkCircle, checkmarkCircleOutline, eyeOutline, information, informationCircleOutline, radioButtonOff, radioButtonOffOutline, radioButtonOn, text, textOutline, textSharp, trashBin, watchOutline } from "ionicons/icons";
 import InputTextItem from "./Items/InputTextItem";
@@ -45,6 +45,10 @@ const Forms: React.FC = () => {
     }
   };
   
+  useEffect(() => {
+    console.log(data)
+
+  }, [data]);
 
   const addItems = (type: string) => {
     const newItem: FormData = {
@@ -129,10 +133,10 @@ const Forms: React.FC = () => {
                 previewsForm?.map((item) => (
                   <IonRow key={item.id} className="container-edition-mode">
                     <IonCol className="edition-mode">
-                      {item.type === "inputtextitem" && <InputTextItem getdata={getData} />}
-                      {item.type === "checkboxitem" && <CheckboxItems getdata={getData} />}
-                      {item.type === "radioitem" && <RadioItems getdata={getData} />}
-                      {item.type === "textareaitem" && <TextareaItem getdata={getData} />}
+                      {item.type === "inputtextitem" && <InputTextItem getdata={getData} value={item.value} />}
+                      {item.type === "checkboxitem" && <CheckboxItems getdata={getData} value={item.value} />}
+                      {item.type === "radioitem" && <RadioItems getdata={getData} value={item.value} />}
+                      {item.type === "textareaitem" && <TextareaItem getdata={getData} value={item.value} />}
                     </IonCol>
                     <IonCol size="auto">
                       <IonIcon color={'primary'} onClick={() => removeItem(item.id)} icon={trashBin} />

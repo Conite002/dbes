@@ -6,12 +6,13 @@ import { Item } from "../../../utils/interface";
 
 interface InputTextItemProps {
   getdata: (item: Item) => void;
+  value?: string;
 }
 
-const InputTextItem: React.FC<InputTextItemProps> = ({ getdata }) => {
+const InputTextItem: React.FC<InputTextItemProps> = ({ getdata, value }) => {
     const [item, setItem] = useState<Item>({
         name: "",
-        value: "",
+        value: value,
         type: "inputtextitem",
         id: generateUniqueId()
     });
